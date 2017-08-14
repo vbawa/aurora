@@ -1,0 +1,1070 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "AuroraProxy"
+  },
+  "host": "192.168.1.19:16021",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/v1/new": {
+      "post": {
+        "tags": [
+          "Authorization"
+        ],
+        "operationId": "Authorization_NewUser",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AuthToken"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "operationId": "Info_Info",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Info"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Authorization"
+        ],
+        "operationId": "Authorization_Delete",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/effects/select": {
+      "get": {
+        "tags": [
+          "Effects"
+        ],
+        "operationId": "Effects_GetSelected",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Effects"
+        ],
+        "operationId": "Effects_Set",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "select",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SelectValue"
+            }
+          },
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/effects/effectsList": {
+      "get": {
+        "tags": [
+          "Effects"
+        ],
+        "operationId": "Effects_GetEffects",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/effects": {
+      "put": {
+        "tags": [
+          "Effects"
+        ],
+        "operationId": "Effects_WriteEffects",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "w",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WriteEffect"
+            }
+          },
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EffectDetails"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/identify": {
+      "put": {
+        "tags": [
+          "Identify"
+        ],
+        "operationId": "Identify_Identify",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/panelLayout/globalOrientation": {
+      "get": {
+        "tags": [
+          "PanelLayout"
+        ],
+        "operationId": "PanelLayout_GetGlobalOrientation",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MinMaxValue[Int32]"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PanelLayout"
+        ],
+        "operationId": "PanelLayout_SetGlobalOrientation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetGlobalOrientation"
+            }
+          },
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/panelLayout/layout": {
+      "get": {
+        "tags": [
+          "PanelLayout"
+        ],
+        "operationId": "PanelLayout_GetLayout",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Layout"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/state/on": {
+      "get": {
+        "tags": [
+          "State"
+        ],
+        "operationId": "State_GetOn",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiValue[Boolean]"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "State"
+        ],
+        "operationId": "State_SetOn",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "on",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetStateOn"
+            }
+          },
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/state/brightness": {
+      "get": {
+        "tags": [
+          "State"
+        ],
+        "operationId": "State_GetBrightness",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MinMaxValue[Int32]"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "State"
+        ],
+        "operationId": "State_SetBrightness",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "b",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetStateBrightness"
+            }
+          },
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/state/hue": {
+      "get": {
+        "tags": [
+          "State"
+        ],
+        "operationId": "State_GetHue",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MinMaxValue[Int32]"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "State"
+        ],
+        "operationId": "State_SetHue",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "h",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetStateHue"
+            }
+          },
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/state/sat": {
+      "get": {
+        "tags": [
+          "State"
+        ],
+        "operationId": "State_GetSaturation",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MinMaxValue[Int32]"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "State"
+        ],
+        "operationId": "State_SetSaturation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "s",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetStateSaturation"
+            }
+          },
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/state/ct": {
+      "get": {
+        "tags": [
+          "State"
+        ],
+        "operationId": "State_GetColorTemperature",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MinMaxValue[Int32]"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "State"
+        ],
+        "operationId": "State_SetColorTemperature",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "t",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetStateColorTemperature"
+            }
+          },
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/{authToken}/state/colorMode": {
+      "get": {
+        "tags": [
+          "State"
+        ],
+        "operationId": "State_GetColorMode",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "authToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "enum": [
+                "effect",
+                "hs",
+                "ct"
+              ],
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AuthToken": {
+      "type": "object",
+      "properties": {
+        "auth_token": {
+          "type": "string"
+        }
+      }
+    },
+    "Info": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "serialNo": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "firmwareVersion": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/State"
+        },
+        "brightness": {
+          "$ref": "#/definitions/MinMaxValue[Int32]"
+        },
+        "hue": {
+          "$ref": "#/definitions/MinMaxValue[Int32]"
+        },
+        "sat": {
+          "$ref": "#/definitions/MinMaxValue[Int32]"
+        },
+        "ct": {
+          "$ref": "#/definitions/MinMaxValue[Int32]"
+        },
+        "colorMode": {
+          "enum": [
+            "effect",
+            "hs",
+            "ct"
+          ],
+          "type": "string"
+        },
+        "effects": {
+          "$ref": "#/definitions/Effects"
+        },
+        "panelLayout": {
+          "$ref": "#/definitions/PanelLayout"
+        }
+      }
+    },
+    "State": {
+      "type": "object",
+      "properties": {
+        "on": {
+          "$ref": "#/definitions/ApiValue[Boolean]"
+        }
+      }
+    },
+    "MinMaxValue[Int32]": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "min": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "max": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "Effects": {
+      "type": "object",
+      "properties": {
+        "select": {
+          "type": "string"
+        },
+        "effectsList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PanelLayout": {
+      "type": "object",
+      "properties": {
+        "layout": {
+          "$ref": "#/definitions/LayoutWithGlobalOrientation"
+        }
+      }
+    },
+    "ApiValue[Boolean]": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "boolean"
+        }
+      }
+    },
+    "LayoutWithGlobalOrientation": {
+      "type": "object",
+      "properties": {
+        "globalOrientation": {
+          "$ref": "#/definitions/MinMaxValue[Int32]"
+        },
+        "numPanels": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sideLength": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "positionData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PanelPositionData"
+          }
+        }
+      }
+    },
+    "PanelPositionData": {
+      "type": "object",
+      "properties": {
+        "panelId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "x": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "y": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "o": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "SelectValue": {
+      "type": "object",
+      "properties": {
+        "select": {
+          "type": "string"
+        }
+      }
+    },
+    "WriteEffect": {
+      "type": "object",
+      "properties": {
+        "write": {
+          "$ref": "#/definitions/EffectCommand"
+        }
+      }
+    },
+    "EffectCommand": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string"
+        },
+        "animName": {
+          "type": "string"
+        }
+      }
+    },
+    "EffectDetails": {
+      "type": "object",
+      "properties": {
+        "animName": {
+          "type": "string"
+        },
+        "loop": {
+          "type": "boolean"
+        },
+        "palette": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Color"
+          },
+          "readOnly": true
+        },
+        "transTime": {
+          "$ref": "#/definitions/MinMax[Int32]"
+        },
+        "windowSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "flowFactor": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "delayTime": {
+          "$ref": "#/definitions/MinMax[Int32]"
+        },
+        "colorType": {
+          "type": "string"
+        },
+        "animType": {
+          "type": "string"
+        },
+        "explodeFactor": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "brightnessRange": {
+          "$ref": "#/definitions/MinMaxValue[Int32]"
+        },
+        "direction": {
+          "type": "string"
+        }
+      }
+    },
+    "Color": {
+      "type": "object",
+      "properties": {
+        "hue": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "saturation": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "brightness": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MinMax[Int32]": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "max": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "SetGlobalOrientation": {
+      "type": "object",
+      "properties": {
+        "globalOrientation": {
+          "$ref": "#/definitions/ApiValue[Int32]"
+        }
+      }
+    },
+    "ApiValue[Int32]": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "Layout": {
+      "type": "object",
+      "properties": {
+        "numPanels": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sideLength": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "positionData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PanelPositionData"
+          }
+        }
+      }
+    },
+    "SetStateOn": {
+      "type": "object",
+      "properties": {
+        "on": {
+          "$ref": "#/definitions/ApiValue[Boolean]"
+        }
+      }
+    },
+    "SetStateBrightness": {
+      "type": "object",
+      "properties": {
+        "brightness": {
+          "$ref": "#/definitions/SetStateValue[Int32]"
+        }
+      }
+    },
+    "SetStateValue[Int32]": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "increment": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "SetStateHue": {
+      "type": "object",
+      "properties": {
+        "hue": {
+          "$ref": "#/definitions/SetStateValue[Int32]"
+        }
+      }
+    },
+    "SetStateSaturation": {
+      "type": "object",
+      "properties": {
+        "sat": {
+          "$ref": "#/definitions/SetStateValue[Int32]"
+        }
+      }
+    },
+    "SetStateColorTemperature": {
+      "type": "object",
+      "properties": {
+        "ct": {
+          "$ref": "#/definitions/SetStateValue[Int32]"
+        }
+      }
+    }
+  }
+}
