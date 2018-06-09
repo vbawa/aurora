@@ -47,8 +47,7 @@ class NanoLeafClient(SwaggerClient):
     SwaggerClient.  The former is for auto-complete and the latter is the
     actually-operable object, since this class overrides __getattr__ """
     @staticmethod
-    def build(
-            json_filename="/home/veer/Projects/nanoleaf/swagger.json"):
+    def build(json_filename="swagger.json"):
         spec = load_file(json_filename)
         client = NanoLeafClient.from_spec(spec)
         client.swagger_client = SwaggerClient.from_spec(spec)
